@@ -7,6 +7,37 @@ let multiplication = firstNumber * secondNumber;
 let division = firstNumber / secondNumber;
 
 
-alert ('Sum:' + sum + '\n' + 'Deduction: ' + deduction + '\n' + 'Multiplication: ' + multiplication + '\n' + 'Division: ' + division);
+if ((firstNumber == null || firstNumber == "") || (secondNumber == null || secondNumber == "")) {
+    alert ('Error message');
+} else if (secondNumber == 0) {
+    alert ('Sum:' + sum + '\n' );
+    alert ('Deduction: ' + deduction + '\n' );
+    alert ('Multiplication: ' + multiplication + '\n' );
+    alert ('Error message');  
+} else if (firstNumber < secondNumber) {
+   let desition = confirm ('Are you sure you want to continue?');
+   if (desition == true) {
+    alert ('Sum:' + sum + '\n' );
+    alert ('Deduction: ' + deduction + '\n' );
+    alert ('Multiplication: ' + multiplication + '\n' );
+    alert ('Division: ' + division);
+   } else {
+    alert ('Sum:' + sum + '\n' );
+    alert ('Multiplication: ' + multiplication + '\n' );
+    alert ('Division: ' + division);
+   }     
+} else {
+    alert ('Sum:' + sum + '\n' );
+    alert ('Deduction: ' + deduction + '\n' );
+    alert ('Multiplication: ' + multiplication + '\n' );
+    alert ('Division: ' + division);
+}
+
+
+
+
+
+
+
 
 
