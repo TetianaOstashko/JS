@@ -14,7 +14,7 @@ if ((firstNumber == null || firstNumber == "") || (secondNumber == null || secon
     alert ('Deduction: ' + deduction + '\n' );
     alert ('Multiplication: ' + multiplication + '\n' );
     alert ('Error message');  
-} else if (firstNumber < secondNumber) {
+} else if (Number(firstNumber) < Number(secondNumber)) {
    let desition = confirm ('Are you sure you want to continue?');
    if (desition == true) {
     alert ('Sum:' + sum + '\n' );
