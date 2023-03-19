@@ -91,6 +91,7 @@ alert(element);
 */
 
 
+/*
  //Homework lesson 24
 
 // function to get the result of adding one number to another  
@@ -156,3 +157,45 @@ let maxElement = getMaxElement (elements);
 
 alert('Min element is ' +  minElement);
 alert('Max element is ' + maxElement);
+*/
+
+//Homework lesson 25
+
+//Function to check if object is empty
+function isEmpty(object) {
+    return Object.keys(object).length === 0;
+}
+
+//Object which includes user's info
+const user = {
+    name: 'Tetiana',
+    age: '28',
+    sayHello: function() {
+       alert('Привіт, я ' + this.name + '. Мені ' + this.age + ' років.');
+    }
+};
+
+function isEmpty(object) {
+    return Object.keys(object).length === 0;
+}
+
+user.sayHello();
+
+//Object which calculates sum and mul of 2 entered numbers
+const calc = {
+    sum() {
+        return this.firstNum + this.secondNum;
+    },
+
+    mul() {
+        return this.firstNum * this.secondNum;
+    },
+
+    ask () {
+        this.firstNum = +prompt('Enter the first number');
+        this.secondNum = +prompt('Enter the second number');
+    }
+};
+calc.ask();
+alert(calc.sum());
+alert(calc.mul());
