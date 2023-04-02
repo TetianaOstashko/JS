@@ -1,158 +1,97 @@
-/*
-// Homework lesson 22
-let firstNumber = prompt('Please enter first number');
-let secondNumber = prompt('Please enter second number');
-let sum = Number(firstNumber) + Number(secondNumber);
-let deduction = firstNumber - secondNumber;
-let multiplication = firstNumber * secondNumber;
-let division = firstNumber / secondNumber;
+const num1 = parseFloat(prompt("Enter the first number:"));
+const num2 = parseFloat(prompt("Enter the second number:"));
 
-if ((firstNumber == null || firstNumber == "") || (secondNumber == null || secondNumber == "")) {
-    alert ('Error message');
-} else if (secondNumber == 0) {
-    alert ('Sum:' + sum + '\n' );
-    alert ('Deduction: ' + deduction + '\n' );
-    alert ('Multiplication: ' + multiplication + '\n' );
-    alert ('Error message');  
-} else if (Number(firstNumber) < Number(secondNumber)) {
-   let desition = confirm ('Are you sure you want to continue?');
-   if (desition == true) {
-    alert ('Sum:' + sum + '\n' );
-    alert ('Deduction: ' + deduction + '\n' );
-    alert ('Multiplication: ' + multiplication + '\n' );
-    alert ('Division: ' + division);
-   } else {
-    alert ('Sum:' + sum + '\n' );
-    alert ('Multiplication: ' + multiplication + '\n' );
-    alert ('Division: ' + division);
-   }     
-} else {
-    alert ('Sum:' + sum + '\n' );
-    alert ('Deduction: ' + deduction + '\n' );
-    alert ('Multiplication: ' + multiplication + '\n' );
-    alert ('Division: ' + division);
-}
-*/
-
-/*
-// Homework lesson 23
-// Creat array
-const array = [
-    2,
-    45,
-    80,
-    'Hi there!',
-    356,
-    12,
-    111,
-    75,
-    true,
-    30,
-    256,
-    false,
-    100,
-];
-
-// Script to find sum of elements in array
-let sum = 0;
-for (let i = 0; i < array.length; i++) {
-    if (typeof array[i] === "number") { //check type of element in array
-        sum+=array[i];
-    }
-}
-alert (sum);
-
-// Script to fin min & max elements in array
-let min = array[0], max = array[0]; // creat two variables as min and max with initial values as the first element of the array
-for (let i = 1; i < array.length; i++) {
-
-    if (array[i] > max && typeof array[i] === "number") {
-        max = array[i];
-    }
-
-    if (array[i] < min && typeof array[i] === "number") {
-        min = array[i];
-    }
-}
-alert (max);
-alert (min);
-
-// Display half of triangle 
-let totalRows = 5;
-let element = ""; // Variable carries the final element in string format
-for (let row = 1; row <= totalRows; row++) // Loop runs for `rows` no. of times
-{  
-  for (let col = 1; col <= row; col++) { 
-    element += "#";
+// function to check if the value is number or not
+function checkIfNumber(enteredValue, message) {
+  if (isNaN(enteredValue)) {
+    const errorMsg = message ? message : "Please, enter a number";
+    document.getElementById("result").innerHTML = errorMsg;
+    return false;
   }
-  element += "\n"; // Add a new line character after contents of each line
+  return true;
 }
-alert(element);
-*/
 
+// function to make gradient
+function gradient(result, resultElement) {
+  if (result > 5000 && result <= 100000) {
+      resultElement.style.color = 'rgb(222, 122, 252)';
+  } else if (result > 1000 && result <= 5000) {
+      resultElement.style.color = 'rgb(233, 95, 125)';
+    } else if (result > 100 && result <= 1000) {
+      resultElement.style.color = 'rgb(245, 55, 75)';
+  } else  if (result > 0 && result <= 100) {
+     resultElement.style.color = 'rgb(255, 0, 0)';
 
- //Homework lesson 24
+  } else if (result <= 0 && result >= -100) {
+      resultElement.style.color = 'rgb(206, 48, 55)';
+  } else if (result < -100 && result >= -1000) {
+      resultElement.style.color = 'rgb(228, 76, 22)';
+  } else if (result < -1000 && result >= -50000) {
+      resultElement.style.color = 'rgb(77, 15, 10)';
+  } else if (result < -50000 && result >= -1000000) {
+      resultElement.style.color = 'rgb(41, 3, 3)';
+  }
+}
 
-// function to get the result of adding one number to another  
-function sum(num1, num2) {
-    if (typeof num1 === "number" && typeof num2 === "number") {
-        return Number(num1) + Number(num2); 
+//function to add color
+function makeResultsColored(result) {
+  const resultElement = document.getElementById("result");
+  gradient(result, resultElement);
+  resultElement.innerHTML = `Result is: ${result}`;
+}
+
+function sum() {
+  if (checkIfNumber(num1) && checkIfNumber(num2)) {
+    const result = num1 + num2;
+    makeResultsColored(result);
+  }
+}
+ 
+function subtraction() {
+  if (checkIfNumber(num1) && checkIfNumber(num2)) {
+    const result = num1 - num2;
+    makeResultsColored(result);
+  }
+}
+  
+function multiplication() {
+  if (checkIfNumber(num1) && checkIfNumber(num2)) {
+    const result = num1 * num2;
+    makeResultsColored(result);
+  }
+}
+  
+function division() {
+  if (checkIfNumber(num1) && checkIfNumber(num2)) {
+    if (num2 === 0) {
+      document.getElementById("result").innerHTML = "ERROR, there's no way to divide a number by 0";
+      document.getElementById("result").style.color = "red";
+    } else {
+      const result = num1 / num2;
+      makeResultsColored(result);
     }
+  }
 }
-alert(sum(25, 54));
 
-// function to get the result of subtracting one number from another
-function deduction(num1, num2) {
-    if (typeof num1 === "number" && typeof num2 === "number") {
-        return num1 - num2; 
+// function to find Min & Max elements in array
+const array = [233, 6, -9, 0, -252, 1025, 999, 125];
+function findMin(array) {
+  let min = array[0];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < min) {
+      min = array[i];
     }
- }
- alert(deduction(30, 15));
+  }
+  document.getElementById("resultMinMax").innerHTML = "Min element is: " + min;
+}
 
-// function to get the result of multiplying one number by anotheк
- function multiplication(num1, num2) {
-    if (typeof num1 === "number" && typeof num2 === "number") {
-        return num1 * num2;
+function findMax(array) {
+  let max = array[0];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > max) {
+      max = array[i];
     }
- }
-alert(multiplication(5, 25));
-
-// function to get the result of dividing one number by another
-function division(num1, num2) {
-    if (typeof num1 === "number" && typeof num2 === "number") {
-        return num1 / num2;
-    }
-}
-alert(division(81, 9));
-
-
-// function to find min and max elements in array
-function getMinElement (elements) {
-    let minElement = elements[0];
-    for (let i = 0; i < elements.length; i++) {
-        if (typeof elements[i] === "number") {
-            if (elements[i] < minElement){
-                minElement = elements [i];
-            }
-        }
-    };
-    return minElement;
-}
-function getMaxElement (elements) {
-    let maxElement = elements[0];
-    for (let i = 0; i < elements.length; i++){
-        if (typeof elements[i] === "number") {
-            if (elements[i] > maxElement){
-                maxElement = elements[i];
-            }
-        }
-    };
-    return maxElement;
+  }
+  document.getElementById("resultMinMax").innerHTML = "Max element is: " + max;
 }
 
-let elements = [-125, 0, 'Hello!', 225, 34, 48, 123, true, 13, false];
-let minElement = getMinElement (elements);
-let maxElement = getMaxElement (elements);
-
-alert('Min element is ' +  minElement);
-alert('Max element is ' + maxElement);
