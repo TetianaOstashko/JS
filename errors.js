@@ -37,5 +37,6 @@ const calculator = function(init = 0) {
 }
 
 const c = calculator();
+c();
 console.log(c()); 
 console.log(c());
