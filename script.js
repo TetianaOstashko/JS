@@ -24,4 +24,4 @@ Function.prototype.defer = function (n) {
   }, n)
 }
 
-check.defer(2000);
+check.defer(1000);
